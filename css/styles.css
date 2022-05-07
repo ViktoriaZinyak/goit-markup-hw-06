@@ -2,6 +2,7 @@
   --header-color: #212121;
   --header-contacts-color: #757575;
   --accent-color: #2196f3;
+  --btn-hover-color: rgba(24, 140, 232, 1);
   --logo-color: #000000;
   --logo-footer-color: #ffffff;
   --main-title-color: #ffffff;
@@ -12,6 +13,7 @@
   --text-color: #757575;
   --footer-address-color: #ffffff;
   --footer-contacts-color: rgba(255, 255, 255, 0.6);
+  --footer-input-border: rgba(255, 255, 255, 0.3);
   --border-porfolio-color: #ececec;
   --border-projects-color: #eeeeee;
   --soc-icon-color: #afb1b8;
@@ -19,6 +21,9 @@
   --activity-text-bg-color: rgba(47, 48, 58, 0.8);
   --projects-cover-bg-color: rgba(33, 150, 243, 0.9);
   --modal-bg-color: rgba(0, 0, 0, 0.2);
+  --btn-close-border-color: rgba(0, 0, 0, 0.1);
+  --modal-input-color: rgba(33, 33, 33, 0.2);
+  --placeholder-comment-color: rgba(117, 117, 117, 0.5);
 }
 
 body {
@@ -217,11 +222,17 @@ header {
   letter-spacing: 0.06em;
   color: var(--main-title-color);
   background-color: var(--accent-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-color: transparent;
   border-radius: 4px;
   cursor: pointer;
 }
 
+.button:hover,
+.button:focus {
+  background-color: var(--btn-hover-color);
+}
 /*----------------------COMPANY FEATURES----------------------*/
 .features {
   padding-top: 94px;
@@ -516,6 +527,61 @@ header {
   background-color: var(--accent-color);
 }
 
+.footer-subscribe {
+  margin-left: auto;
+}
+
+.footer-input {
+  width: 358px;
+  height: 50px;
+  margin-right: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+
+  color: var(--border-porfolio-color);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.footer-input::placeholder {
+  font-size: 16px;
+  color: var(--footer-contacts-color);
+  line-height: 1.25;
+}
+
+.footer-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 50px;
+  background-color: var(--accent-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: var(--footer-address-color);
+  cursor: pointer;
+  border-radius: 4px;
+  border-color: transparent;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 15%);
+}
+
+.icon-send {
+  margin-left: 10px;
+  fill: var(--footer-address-color);
+}
+
+.footer-button:hover,
+.footer-button:focus {
+  background-color: var(--btn-hover-color);
+}
+
 /*----------------------PORTFOLIO----------------------*/
 
 .projects {
@@ -662,6 +728,7 @@ header {
   transform-origin: top left;
   width: 528px;
   min-height: 581px;
+  padding: 40px;
   background: var(--main-bg-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -682,11 +749,143 @@ header {
   top: 8px;
   right: 8px;
   background-color: var(--main-bg-color);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--btn-close-border-color);
   border-radius: 50%;
   cursor: pointer;
 }
 
 .icon-close {
   fill: var(--logo-color);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-close:hover .icon-close {
+  fill: var(--accent-color);
+}
+
+.modal-title {
+  margin-top: 0;
+  margin-bottom: 12px;
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: var(--second-title-color);
+}
+
+.modal-field {
+  margin-bottom: 10px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+  color: var(--text-color);
+}
+
+.modal-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--modal-input-color);
+  border-radius: 4px;
+  padding: 11px 12px 11px 42px;
+  outline: none;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-icon {
+  position: relative;
+}
+
+.form-icon {
+  position: absolute;
+  top: 0;
+  left: 12px;
+  transform: translateY(50%);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-input:focus {
+  border-color: var(--accent-color);
+}
+
+.modal-input:focus + .form-icon {
+  fill: var(--accent-color);
+}
+
+.modal-field-comment {
+  margin-bottom: 20px;
+}
+
+.comment-area {
+  display: block;
+  height: 120px;
+  padding: 12px 16px;
+  resize: none;
+}
+
+.comment-area::placeholder {
+  color: var(--placeholder-comment-color);
+}
+
+.textarea-link {
+  color: var(--accent-color);
+}
+
+.icon-check {
+  fill: transparent;
+}
+
+.check-field {
+  margin-bottom: 30px;
+}
+
+.check-square {
+  display: block;
+  margin-right: 8.4px;
+  width: 16px;
+  height: 15px;
+  background-image: url(../images/icon-ckeck-square.svg);
+  transition: background-image 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.checkbox-hidden:checked + .checkbox-label .check-square {
+  background-image: url(../images/icon-checked.svg);
+}
+
+.checkbox-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 55px 10px 56px;
+  min-width: 200px;
+  height: 50px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: var(--main-title-color);
+  background-color: var(--accent-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 15%);
+  border-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkbox-btn:hover,
+.checkbox-btn:focus {
+  background-color: var(--btn-hover-color);
 }
